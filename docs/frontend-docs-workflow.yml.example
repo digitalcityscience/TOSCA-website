@@ -1,0 +1,32 @@
+# Install in TOSCA-2/.github/workflows/docs.yml after review.
+# Runs without publishing credentials, including on fork PRs.
+name: Frontend API documentation
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run docs
+      - name: Record provenance
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          SOURCE_REPOSITORY: ${{ github.repository }}
+        run: node -e 'require("node:fs").writeFileSync("docs/provenance.json", JSON.stringify({commit:process.env.SOURCE_SHA,repository:process.env.SOURCE_REPOSITORY}))'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frontend-api-${{ github.event.pull_request.number || 'main' }}-${{ github.event.pull_request.head.sha || github.sha }}
+          path: docs/
+          retention-days: 14
