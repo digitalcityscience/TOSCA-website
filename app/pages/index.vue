@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { projects } from '~/data/projects'
+import { platforms } from '~/data/platforms'
+const urbanStories = platforms['sumo-ngcn']
 const { t } = useI18n()
 const localePath = useLocalePath()
 useSeoMeta({ title: () => t('home'), description: () => t('intro') })
@@ -12,14 +14,16 @@ const milestones = computed(() => [
 </script>
 <template>
   <div class="shell">
-    <section class="hero"><div class="hero-copy"><p class="eyebrow">{{ t('eyebrow') }}</p><h1>{{ t('hero') }}</h1><p class="intro">{{ t('intro') }}</p><UButton :to="localePath('/projects')" trailing-icon="i-lucide-arrow-up-right" size="xl">{{ t('explore') }}</UButton><a href="#journey" class="story-link">{{ t('story') }} <UIcon name="i-lucide-arrow-down" /></a></div><CityIllustration /></section>
+    <section class="hero"><div class="hero-copy"><p class="eyebrow">{{ t('eyebrow') }}</p><h1>{{ t('hero') }}</h1><p class="intro">{{ t('intro') }}</p><UButton :to="localePath('/projects')" trailing-icon="i-lucide-arrow-up-right" size="xl">{{ t('explore') }}</UButton><a href="#journey" class="story-link">{{ t('story') }} <UIcon name="i-lucide-arrow-down" /></a>
+        <a :href="urbanStories" target="_blank" rel="noopener noreferrer" class="hero-live"><span class="hero-live-tag">{{ t('heroLiveTag') }}</span><span>{{ t('heroLive') }} <UIcon name="i-lucide-arrow-up-right" /></span></a>
+      </div><CityIllustration /></section>
     <div class="context-strip"><span>DIGITAL CITY SCIENCE <b>×</b> HAFENCITY UNIVERSITY</span><span>2019 — {{ t('current') }}</span><span>{{ t('countries') }}</span></div>
     <section id="journey" class="journey-section"><div class="section-heading"><div><p class="eyebrow">01 / {{ t('story') }}</p><h2>{{ t('journey') }}</h2></div><p>{{ t('journeyIntro') }}</p></div>
       <UTimeline :items="milestones" :default-value="3" size="lg" :ui="{ wrapper: 'pb-14 pl-5', title: 'text-2xl mb-5 font-semibold', date: 'text-primary font-mono text-sm mb-2', indicator: 'rounded-full', separator: 'bg-accented' }">
         <template #description="{ item }"><p class="milestone-description">{{ item.description }}</p><div class="timeline-cards"><ProjectCard v-for="project in projects.filter(p => item.ids.includes(p.slug))" :key="project.slug" :project="project" compact /></div></template>
       </UTimeline>
     </section>
-    <section class="next-chapter"><p class="eyebrow">{{ t('current') }} / SUMO_15</p><h2>{{ t('currentText') }}</h2><UButton :to="localePath('/projects/sumo-ngcn')" color="neutral" variant="outline" trailing-icon="i-lucide-arrow-right">{{ t('read') }}</UButton></section>
+    <section class="next-chapter"><p class="eyebrow">{{ t('current') }} / SUMO_15</p><h2>{{ t('currentText') }}</h2><div class="chapter-actions"><UButton :to="urbanStories" target="_blank" rel="noopener noreferrer" color="neutral" trailing-icon="i-lucide-arrow-up-right">{{ t('liveCta') }}</UButton><UButton :to="localePath('/projects/sumo-ngcn')" color="neutral" variant="outline" trailing-icon="i-lucide-arrow-right">{{ t('read') }}</UButton></div></section>
     <section class="docs-cta"><div><p class="eyebrow">02 / {{ t('docs') }}</p><h2>{{ t('learn') }}</h2><p>{{ t('learnIntro') }}</p></div><UButton :to="localePath('/docs')" variant="outline" trailing-icon="i-lucide-book-open">{{ t('viewDocs') }}</UButton></section>
   </div>
 </template>

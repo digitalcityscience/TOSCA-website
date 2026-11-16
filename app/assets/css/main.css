@@ -157,3 +157,11 @@ h1 { font-size:clamp(45px,6vw,80px); letter-spacing:-3.4px; line-height:1.04; fo
   .arch-hint { margin-left:0; flex-basis:100%; }
 }
 @media(max-width:700px) { .arch-layer { padding:20px; }.arch-parts { grid-template-columns:1fr 1fr; }.arch-integration summary { flex-wrap:wrap; gap:10px 14px; padding:18px 20px; }.arch-int-copy { flex-basis:calc(100% - 50px); }.arch-int-body { padding:0 20px 20px; }.arch-section { margin-top:60px; }.arch-steps li { padding:14px; gap:10px; } }
+/* Home: NGCN line under the hero buttons. --live is darker than --accent in light mode so small text keeps 4.5:1 contrast. */
+:root { --live:#a8552f; }.dark { --live:var(--accent); }
+.hero-live { display:flex; align-items:center; gap:10px; width:fit-content; margin-top:30px; font-size:14px; font-weight:700; color:var(--live); }
+.hero-live:hover { text-decoration:underline; text-underline-offset:5px; }
+.hero-live svg { display:inline; width:15px; height:15px; vertical-align:-2px; }.hero-live-tag { flex:none; }
+.hero-live-tag { padding:3px 8px; font-size:10px; letter-spacing:1.4px; text-transform:uppercase; color:var(--paper); background:var(--live); }
+.chapter-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.next-chapter .chapter-actions a:last-child { background:transparent; color:var(--chapter-text); --tw-ring-color:#7f9c88; }.next-chapter .chapter-actions a:last-child:hover { background:rgb(255 255 255 / .08); color:var(--chapter-text); }
