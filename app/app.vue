@@ -8,7 +8,7 @@ const route = useRoute()
 watch(() => route.fullPath, () => { open.value = false })
 useHead({ htmlAttrs: { lang: locale } })
 const githubUrl = 'https://github.com/digitalcityscience/TOSCA-2'
-const links = [{ key: 'home', path: '/' }, { key: 'projects', path: '/projects' }, { key: 'about', path: '/about' }, { key: 'docs', path: '/docs' }]
+const links = [{ key: 'home', path: '/' }, { key: 'projects', path: '/projects' }, { key: 'about', path: '/about' }, { key: 'architecture', path: '/architecture' }, { key: 'docs', path: '/docs' }]
 </script>
 <template>
   <UApp :locale="locale === 'de' ? de : en">

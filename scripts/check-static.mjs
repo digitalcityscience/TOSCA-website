@@ -1,7 +1,7 @@
 import { readFile, access } from 'node:fs/promises'
 import assert from 'node:assert/strict'
 const slugs = ['tosca-ind-1','tosca-ecu-1','tosca-pal','tosca-ind-2','tosca-ecu-2','kaba','sumo-ngcn']
-const routes = ['', 'projects','about','contact','docs','docs/getting-started','docs/documentation-pipeline', ...slugs.map(s => `projects/${s}`)]
+const routes = ['', 'projects','about','architecture','contact','docs','docs/getting-started','docs/documentation-pipeline', ...slugs.map(s => `projects/${s}`)]
 for (const language of ['', 'de/']) {
   for (const route of routes) {
     const file = `.output/public/${language}${route}${route ? '/' : ''}index.html`

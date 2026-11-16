@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   ui: { fonts: false },
   icon: {
     provider: 'none',
-    clientBundle: { scan: true, icons: ['lucide:sun', 'lucide:moon', 'lucide:globe', 'lucide:arrow-up-right', 'lucide:arrow-down', 'lucide:arrow-right', 'lucide:menu', 'lucide:sprout', 'lucide:map', 'lucide:users', 'lucide:waypoints', 'lucide:book-open', 'lucide:code-xml', 'lucide:building-2', 'lucide:search'] }
+    clientBundle: { scan: true, icons: ['lucide:sun', 'lucide:moon', 'lucide:globe', 'lucide:arrow-up-right', 'lucide:arrow-down', 'lucide:arrow-right', 'lucide:menu', 'lucide:sprout', 'lucide:map', 'lucide:users', 'lucide:waypoints', 'lucide:book-open', 'lucide:code-xml', 'lucide:building-2', 'lucide:search', 'lucide:plus', 'lucide:x', 'lucide:mouse-pointer-click', 'lucide:repeat', 'lucide:shield-check'] }
   },
   colorMode: { preference: 'system', fallback: 'light' },
   i18n: {
